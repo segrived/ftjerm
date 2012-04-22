@@ -40,14 +40,14 @@ Shortcut key which shows and hides \fBftjerm\fR (eg: f12). If you don't specify 
 .TP
 .B "mod, \-m"
 Modifier key, which has to be pressed in combination with the shortcut key to show/hide
-.B stjerm
+.B ftjerm
 : shift, control, alt, windows, none. Default: \fInone\fR.
 .TP
 .B "keymod, \-km"
 Modifier for keyboard shortcuts. Can be a combination (with +) of modifiers (eg: control+alt). Default: \fIcontrol+shift\fR.
 .TP
 .B "autohide, \-ah"
-Whether or not to hide stjerm when it looses focus. Default: \fItrue\fR.
+Whether or not to hide ftjerm when it looses focus. Default: \fItrue\fR.
 .TP
 .B "font, \-fn"
 Terminal font and size (eg: Sans 10). Default: \fIBitstream Vera Sans Mono 10\fR.
@@ -116,20 +116,20 @@ Overrides the calculated vertical position of the window. Specifies the location
 .B "allowreorder, \-ar"
 Allows the tabs of the tab bar to be reordered.
 .SH EXAMPLES
-To run stjerm with F12 as shortcut key, the opacity of 60 and a green foreground color, use:
+To run ftjerm with F12 as shortcut key, the opacity of 60 and a green foreground color, use:
 
-stjerm -k f12 -o 60 -fg 66ff11
+ftjerm -k f12 -o 60 -fg 66ff11
 
 
 To specify the same options in the .Xdefaults file, write this in your .Xdefaults file:
 
-stjerm.key: f12
+ftjerm.key: f12
 
-stjerm.opacity: 60
+ftjerm.opacity: 60
 
-stjerm.foreground: #66ff11
+ftjerm.foreground: #66ff11
 .SH "REPORTING BUGS"
-Report bugs to <stjerm-support@googlegroups.com>.
+Report bugs to <segrived@gmail.com>.
 .SH COPYRIGHT
 Copyright \(co 2007-2011 Kristopher Wilson, Stjepan Glavina and Markus Gross
 

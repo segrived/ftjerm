@@ -4,18 +4,18 @@
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
  * 
- * Stjerm is free software; you can redistribute it and/or modify
+ * Ftjerm is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * Stjerm is distributed in the hope that it will be useful,
+ * Ftjerm is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Stjerm; if not, write to the Free Software
+ * along with Ftjerm; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, 
  * Boston, MA  02110-1301  USA
  */
@@ -43,7 +43,7 @@ void print_help(void)
         "  --help\tDisplay this menu\n"
         "  --info\tDisplay .Xdefault options\n"
         "  --version\tDisplay the current application version\n"
-        "  --toggle\tShow/Hide the current stjerm instance\n"
+        "  --toggle\tShow/Hide the current ftjerm instance\n"
         "(When using an action command, the options are ignored)\n\n"
         "Options are:\n", FTJERM_VERSION, sargv[0]);
     
@@ -60,7 +60,7 @@ void print_help(void)
         "Examples: %s -fn \"Bitstream Vera Sans Mono 12\" -bg white -k F12 -sh /bin/bash\n"
         "          %s -bg black -fg green -w 800 -h 405 -s right -m alt -k f -l 10000\n"
         "          %s -b thick -w 500 -p left -t best -o 90 -m shift -k tab -sh /bin/zsh\n\n"
-        "Use --info to get a list of available .Xdefaults options for stjerm.\n",
+        "Use --info to get a list of available .Xdefaults options for ftjerm.\n",
         sargv[0], sargv[0], sargv[0]);
 }
 
@@ -75,11 +75,11 @@ void print_info(void)
         "  --help\tDisplay command line options menu\n"
         "  --info\tDisplay .Xdefault options\n"
         "  --version\tDisplay current application version\n"
-        "  --toggle\tShow/Hide the current stjerm instance\n"
+        "  --toggle\tShow/Hide the current ftjerm instance\n"
         "(When using an action command, the .Xdefaults options are ignored)\n\n"
         "The .Xdefault options are read from ~/.Xdefaults.\n"
         "To specify an option in .Xdefaults use this syntax:\n"
-        "stjerm.OPTION: VALUE\n"
+        "ftjerm.OPTION: VALUE\n"
         "Example: ftjerm.key: f12\n\n"
         "Available .Xdefaults options:\n", FTJERM_VERSION, sargv[0]);
     

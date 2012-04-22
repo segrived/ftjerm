@@ -4,18 +4,18 @@
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
  * 
- * Stjerm is free software; you can redistribute it and/or modify
+ * Ftjerm is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * Stjerm is distributed in the hope that it will be useful,
+ * Ftjerm is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Stjerm; if not, write to the Free Software
+ * along with Ftjerm; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, 
  * Boston, MA  02110-1301  USA
  */
@@ -78,7 +78,7 @@ static GtkPositionType read_pos(char *v);
 static gboolean parse_hex_color(char *value, GdkColor *color);
 static gboolean parse_bool_str(char *value, gboolean def);
 static GdkModifierType parse_mod(char *value);
-static pid_t get_stjerm_pid(void);
+static pid_t get_ftjerm_pid(void);
 
 void conf_parse_size(char*, int*, int*);
 void read_value(char *name, char *value);
@@ -115,7 +115,7 @@ Option options[OPTION_COUNT] = {
     {"key", "-k", "KEY", "Shortcut key (eg: f12)."},
     {"mod", "-m", "MODIFIER", "meta modifier key: shift, control, alt, windows, none."},
     {"keymod", "-km", "MODIFIER", "Modifier for keyboard shortcuts. Can be a combination (with +) of modifiers (eg: shift+control)."},
-    {"autohide", "-ah", "BOOLEAN", "Whether or not to hide stjerm when it looses focus. Default: true."},
+    {"autohide", "-ah", "BOOLEAN", "Whether or not to hide ftjerm when it looses focus. Default: true."},
     {"font", "-fn", "FONT", "Terminal font and size (eg: Sans 10). Default: Bistream Vera Sans 10."},
     {"background", "-bg", "COLOR", "Background color. Default: Black."},
     {"foreground", "-fg", "COLOR", "Foreground color. Default: White."},
@@ -141,7 +141,7 @@ Option options[OPTION_COUNT] = {
     {"colorX", "-cX", "COLOR", "Specify color X of the terminals color palette"}
 };
 
-pid_t get_stjerm_pid(void)
+pid_t get_ftjerm_pid(void)
 {
     char buffer[100];
     char **list;
@@ -502,7 +502,7 @@ void conf_init(void)
             }
             else if(!strcmp("--toggle", sargv[i]))
             {
-                kill(get_stjerm_pid(), SIGUSR1);
+                kill(get_ftjerm_pid(), SIGUSR1);
                 exit(1);
             }
         }
@@ -515,8 +515,8 @@ void conf_init(void)
 
     if(keyoption == FALSE && _key == 0)
     {
-        printf("hint: you started stjerm without specifying a shortcut key\n"
-               "      to show/hide stjerm run stjerm with the toggle option\n"
+        printf("hint: you started ftjerm without specifying a shortcut key\n"
+               "      to show/hide ftjerm run ftjerm with the toggle option\n"
                "      like this: ftjerm --toggle");
     }
 

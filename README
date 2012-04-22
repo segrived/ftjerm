@@ -1,17 +1,10 @@
-Requirements
-------------
+#Ftjerm v.0.01 (fork of Stjerm)
+
+## Requirements
 pkgconfig, gtk2, vte
 
+## Installation
+sudo make install
 
-Installation
-------------
-    ./autogen.sh
-    make
-    sudo make install
-
-
-Running
-------------
-Simply run:
-    stjerm
-and all available options will be listed.
+## Running
+Simply run: ftjerm
