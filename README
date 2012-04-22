@@ -1,0 +1,17 @@
+Requirements
+------------
+pkgconfig, gtk2, vte
+
+
+Installation
+------------
+    ./autogen.sh
+    make
+    sudo make install
+
+
+Running
+------------
+Simply run:
+    stjerm
+and all available options will be listed.
