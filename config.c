@@ -120,7 +120,7 @@ Option options[OPTION_COUNT] = {
     {"background", "-bg", "COLOR", "Background color. Default: Black."},
     {"foreground", "-fg", "COLOR", "Foreground color. Default: White."},
     {"allowbold", "-ab", "BOOLEAN", "Allow bold fonts or not. Default: true."},
-    {"border", "-b", "TYPE", "Border type: thin, thick, none. Default: none."},
+    {"border", "-b", "NUMBER", "Border width. Default: 0."},
     {"opacity", "-o", "NUMBER", "Opacity (range: 10 - 100). Default: 100."},
     {"bgimage", "-bgimg", "FILE", "Background image to use on terminal."},
     {"width", "-w", "NUMBER", "Window width, either as an integer or a percentage (eg, 50%). Default: 800."},
@@ -292,7 +292,7 @@ GdkModifierType parse_mod(char *value)
 
 void init_default_values(void)
 {
-    strcpy(_font, "Bitstream Vera Sans Mono 10");
+    strcpy(_font, "Fixed 9");
     gdk_color_parse("black", &_bg);
     gdk_color_parse("white", &_fg);
     _scrollpos = -1;
@@ -805,4 +805,3 @@ gboolean conf_get_allow_reorder(void)
 {
     return _allowreorder;
 }
-
