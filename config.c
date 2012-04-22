@@ -1,6 +1,6 @@
 /*
  * config.c
- * This file is part of Stjerm
+ * This file is part of Ftjerm
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
  * 
@@ -32,7 +32,7 @@
 #include <unistd.h>
 #include <pwd.h>
 #include <signal.h>
-#include "stjerm.h"
+#include "ftjerm.h"
 
 extern int sargc;
 extern char **sargv;
@@ -146,17 +146,17 @@ pid_t get_stjerm_pid(void)
     char buffer[100];
     char **list;
     int i = 0;
-    FILE *p = popen("pidof stjerm", "r");
+    FILE *p = popen("pidof ftjerm", "r");
     
     if(p == NULL)
     {
-        fprintf(stderr, "error: unable to get stjerm pid\n");
+        fprintf(stderr, "error: unable to get ftjerm pid\n");
         exit(1);
     }
     
     if(fgets(buffer, sizeof(buffer), p) == NULL)
     {
-        fprintf(stderr, "error: unable to read stjerm pid\n");
+        fprintf(stderr, "error: unable to read ftjerm pid\n");
         exit(1);
     }
     
@@ -175,12 +175,7 @@ pid_t get_stjerm_pid(void)
 
 void set_border(char *v)
 {
-    if(!strcmp(v, "thin"))
-        _border = BORDER_THIN;
-    else if(!strcmp(v, "thick"))
-        _border = BORDER_THICK;
-    else
-        _border = BORDER_NONE;
+    _border = atoi(v);
 }
 
 void set_mod(char *v)
@@ -301,7 +296,7 @@ void init_default_values(void)
     gdk_color_parse("black", &_bg);
     gdk_color_parse("white", &_fg);
     _scrollpos = -1;
-    _border = BORDER_NONE;
+    _border = 0;
     _opacity = 100.0f;
     strcpy(_bgimage, "");
     _width = 800;
@@ -474,7 +469,7 @@ void conf_init(void)
     {
         o = options[i];
         
-        if((op = XGetDefault(dpy, "stjerm", o.long_name)))
+        if((op = XGetDefault(dpy, "ftjerm", o.long_name)))
             read_value(o.long_name, op);
     }
     
@@ -482,7 +477,7 @@ void conf_init(void)
     {
         sprintf(color, "color%d", i);
         
-        if((op = XGetDefault(dpy, "stjerm", color)))
+        if((op = XGetDefault(dpy, "ftjerm", color)))
             read_value(color, op);
     }
 
@@ -522,7 +517,7 @@ void conf_init(void)
     {
         printf("hint: you started stjerm without specifying a shortcut key\n"
                "      to show/hide stjerm run stjerm with the toggle option\n"
-               "      like this: stjerm --toggle");
+               "      like this: ftjerm --toggle");
     }
 
     struct stat st;

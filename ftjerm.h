@@ -1,5 +1,5 @@
 /*
- * stjerm.h
+ * ftjerm.h
  * This file is part of Stjerm
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
@@ -20,13 +20,13 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __STJERM_H__
-#define __STJERM_H__
+#ifndef __FTJERM_H__
+#define __FTJERM_H__
 
 #include <gtk/gtk.h>
 #include <X11/Xlib.h>
 
-#define STJERM_VERSION 0.15
+#define FTJERM_VERSION "0.01"
 
 #define TERM_ICONIFY_WINDOW    0
 #define TERM_DEICONIFY_WINDOW  1
@@ -38,9 +38,6 @@
 #define TERM_RESIZE_WINDOW     7
 #define TERM_MOVE_WINDOW       8
 
-#define BORDER_THIN  0
-#define BORDER_THICK 1
-#define BORDER_NONE  2
 
 #define POS_TOP         0
 #define POS_BOTTOM      1

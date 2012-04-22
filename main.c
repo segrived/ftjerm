@@ -1,6 +1,6 @@
 /*
  * main.c
- * This file is part of Stjerm
+ * This file is part of Ftjerm
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
  * 
@@ -21,7 +21,7 @@
  */
 
 #include <gtk/gtk.h>
-#include "stjerm.h"
+#include "ftjerm.h"
 
 int sargc;
 char **sargv;
@@ -37,7 +37,7 @@ void print_help(void)
     int i = 0;
     Option o;
     
-    printf("stjerm version %s\n"
+    printf("ftjerm version %s\n"
         "Usage: %s [action] [options]\n\n"
         "Actions are:\n"
         "  --help\tDisplay this menu\n"
@@ -45,7 +45,7 @@ void print_help(void)
         "  --version\tDisplay the current application version\n"
         "  --toggle\tShow/Hide the current stjerm instance\n"
         "(When using an action command, the options are ignored)\n\n"
-        "Options are:\n", STJERM_VERSION, sargv[0]);
+        "Options are:\n", FTJERM_VERSION, sargv[0]);
     
     for(i = 0; i < OPTION_COUNT; i++)
     {
@@ -69,7 +69,7 @@ void print_info(void)
     int i = 0;
     Option o;
     
-    printf("stjerm version %s\n"
+    printf("ftjerm version %s\n"
         "Usage: %s [action] [options]\n\n"
         "Actions are:\n"
         "  --help\tDisplay command line options menu\n"
@@ -80,8 +80,8 @@ void print_info(void)
         "The .Xdefault options are read from ~/.Xdefaults.\n"
         "To specify an option in .Xdefaults use this syntax:\n"
         "stjerm.OPTION: VALUE\n"
-        "Example: stjerm.key: f12\n\n"
-        "Available .Xdefaults options:\n", STJERM_VERSION, sargv[0]);
+        "Example: ftjerm.key: f12\n\n"
+        "Available .Xdefaults options:\n", FTJERM_VERSION, sargv[0]);
     
     for(i = 0; i < OPTION_COUNT; i++)
     {
@@ -95,7 +95,7 @@ void print_info(void)
 
 void print_version(void)
 {
-    printf("stjerm %s\n", STJERM_VERSION);
+    printf("ftjerm %s\n", FTJERM_VERSION);
 }
 
 int main(int argc, char *argv[])

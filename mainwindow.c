@@ -27,7 +27,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <vte/vte.h>
 #include <stdlib.h>
-#include "stjerm.h"
+#include "ftjerm.h"
 
 extern GtkWidget *popupmenu;
 extern GtkWidget *close_tab;
@@ -207,13 +207,9 @@ void build_mainwindow(void)
 
     gtk_widget_show_all(GTK_WIDGET(mainbox));
     gtk_container_add(GTK_CONTAINER(mainwindow), GTK_WIDGET(mainbox));
-
     int border = conf_get_border();
-    if(border == BORDER_THIN)
-        gtk_container_set_border_width(GTK_CONTAINER(mainwindow), 1);
-    else if(border == BORDER_THICK)
-        gtk_container_set_border_width(GTK_CONTAINER(mainwindow), 5);
-    if(border != BORDER_NONE)
+    gtk_container_set_border_width(GTK_CONTAINER(mainwindow), border);
+    if(border != 0)
         g_signal_connect(G_OBJECT(mainwindow), "expose-event",
             G_CALLBACK(mainwindow_expose_event), NULL);
 
@@ -510,8 +506,8 @@ static gboolean mainwindow_expose_event(GtkWidget *widget, GdkEventExpose *event
     gdk_draw_rectangle(widget->window, widget->style->black_gc, FALSE, 0, 0,
         winw-1, winh-1);
 
-    if(conf_get_border() == BORDER_THIN)
-        return FALSE;
+    //if(conf_get_border() == 1)
+    //    return FALSE;
 
     gdk_draw_rectangle(widget->window,
         widget->style->bg_gc[GTK_STATE_SELECTED], TRUE, 1, 1, winw -2, winh -2);

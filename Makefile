@@ -14,10 +14,10 @@ CFLAGS += -Wall -Os $(shell pkg-config --cflags $(PACKAGES))
 SRC = main.c mainwindow.c config.c term.c popupmenu.c shortcut.c
 OBJ = ${SRC:.c=.o}
 
-all: options stjerm
+all: options ftjerm
 
 options:
-	@echo stjerm build options:
+	@echo ftjerm build options:
 	@echo "CFLAGS = ${CFLAGS}"
 	@echo "LDFLAGS = ${LDFLAGS}"
 	@echo "CC = ${CC}"
@@ -27,20 +27,20 @@ options:
 	@echo CC $<
 	@${CC} -c ${CFLAGS} $<
 
-${OBJ}: stjerm.h
+${OBJ}: ftjerm.h
 
-stjerm: ${OBJ}
+ftjerm: ${OBJ}
 	@echo LD $@
 	@${LD} -o $@ ${OBJ} ${LDFLAGS}
 	@strip $@
     
 clean:
-	@rm -f ${OBJ} stjerm
+	@rm -f ${OBJ} ftjerm
     
 install: all
 	@echo installing executable file to ${DESTDIR}${BINDIR}
-	@install -Dm755 stjerm "$(DESTDIR)$(BINDIR)"/stjerm
+	@install -Dm755 ftjerm "$(DESTDIR)$(BINDIR)"/ftjerm
 	@echo installing manual pages to ${DESTDIR}${MANDIR}
-	@install -Dm644 stjerm.8 "$(DESTDIR)$(MANDIR)"/stjerm.8.gz
+	@install -Dm644 ftjerm.8 "$(DESTDIR)$(MANDIR)"/ftjerm.8.gz
     
 .PRECIOUS: *.o

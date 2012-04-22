@@ -1,6 +1,6 @@
 /*
  * shortcut.c
- * This file is part of Stjerm
+ * This file is part of Ftjerm
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
  * 
@@ -22,9 +22,10 @@
 
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
+#include <X11/XKBlib.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "stjerm.h"
+#include "ftjerm.h"
 
 static Display *dpy;
 Window root;
@@ -94,7 +95,7 @@ void wait_key(void)
 
         if(event.type == KeyPress)
         {
-            if(XKeycodeToKeysym(dpy, event.xkey.keycode, 0) == opt_key)
+            if(XkbKeycodeToKeysym(dpy, event.xkey.keycode, 0, 1) == opt_key)
                 mainwindow_toggle(0);
         }
     }

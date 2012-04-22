@@ -1,13 +1,13 @@
-.TH STJERM "8" "Last Change: 19 Jul 2011" "stjerm 0.15" ""
+.TH FTJERM "8" "Last Change: 22 Apr 2012" "ftjerm 0.01" ""
 .SH NAME
-stjerm \- quake\-style terminal emulator
+ftjerm \- quake\-style terminal emulator, fork of stjerm
 .SH SYNOPSIS
-.B stjerm [-OPTION] [-OPTION] ... [-OPTION]
+.B ftjerm [-OPTION] [-OPTION] ... [-OPTION]
 .SH DESCRIPTION
-.B stjerm
+.B ftjerm
 is a quake\-style terminal. It is minimalistic and works
 well with compiz.
-.B stjerm
+.B ftjerm
 can be configured via commandline or the .Xdefaults file.
 
 The following list of options displays the .Xdefaults 
@@ -15,7 +15,7 @@ option first and then the commandline option.
 The commandline options have a higher priority and 
 thus override the .Xdefaults options.
 .SH NOTES
-If you run \fBstjerm\fR with an action it will not parse other commandline options and will exit.
+If you run \fBftjerm\fR with an action it will not parse other commandline options and will exit.
 
 If you specify a hex color on the commandline you have to ommit the \fB#\fR char. 
 Otherwise the option will not get parsed.
@@ -32,11 +32,11 @@ Displays menu with .Xdefaults options.
 Display the current application version.
 .TP
 .B "\-\-toggle"
-Show/hide the current \fBstjerm\fR instance.
+Show/hide the current \fBftjerm\fR instance.
 .SH OPTIONS
 .TP
 .B "key, \-k"
-Shortcut key which shows and hides \fBstjerm\fR (eg: f12). If you don't specify a shortcut key, you can only show/hide \fBstjerm\fR if you run \fBstjerm\fR with \fI\-\-toggle\fR.
+Shortcut key which shows and hides \fBftjerm\fR (eg: f12). If you don't specify a shortcut key, you can only show/hide \fBftjerm\fR if you run \fBftjerm\fR with \fI\-\-toggle\fR.
 .TP
 .B "mod, \-m"
 Modifier key, which has to be pressed in combination with the shortcut key to show/hide
@@ -65,7 +65,7 @@ Allow bold fonts or not. Default: \fItrue\fR
 Border type: thin, thick, none. Default: \fInone\fR.
 .TP
 .B "opacity, \-o"
-Opacity (range: 10 - 100). If compositing is enabled \fBstjerm\fR will use real transparency. Otherwise you get pseudo\-transparency.
+Opacity (range: 10 - 100). If compositing is enabled \fBftjerm\fR will use real transparency. Otherwise you get pseudo\-transparency.
 .TP
 .B "bgimage, \-bgimg"
 Background image file. Specify the filename. Default: \fIdisabled\fR.

@@ -1,6 +1,6 @@
 /*
  * term.c
- * This file is part of Stjerm
+ * This file is part of Ftjerm
  *
  * Copyright (C) 2007-2010 - Kristopher Wilson, Stjepan Glavina and Markus Groß
  * 
@@ -22,7 +22,7 @@
 
 #include <gtk/gtk.h>
 #include <vte/vte.h>
-#include "stjerm.h"
+#include "ftjerm.h"
 
 extern GtkWidget *mainwindow;
 extern GtkNotebook* tabbar;
