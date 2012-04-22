@@ -35,6 +35,7 @@ gboolean popupmenu_shown;
 
 GtkWidget *close_tab;
 
+void show_about_dialog();
 void build_popupmenu(void);
 static void popupmenu_activate(gchar*);
 static void popupmenu_deactivate(GtkMenuShell*, gpointer);
@@ -47,13 +48,13 @@ void build_popupmenu(void)
     GtkWidget *menuitem;
     GtkWidget *img;
 
-    gchar *labels[] = {"New Tab", "Close Tab", "Copy", "Paste", "Toggle Fullscreen", "Quit"};
+    gchar *labels[] = {"New Tab", "Close Tab", "Copy", "Paste", "Toggle Fullscreen", "About", "Quit"};
     gchar *stocks[] = {GTK_STOCK_ADD, GTK_STOCK_CLOSE, GTK_STOCK_COPY,
-        GTK_STOCK_PASTE, GTK_STOCK_FULLSCREEN, GTK_STOCK_QUIT};
+        GTK_STOCK_PASTE, GTK_STOCK_FULLSCREEN, GTK_STOCK_ABOUT, GTK_STOCK_QUIT};
 
     int i;
     
-    for(i = 0; i < 6; i++)
+    for(i = 0; i < 7; i++)
     {
         if(i == 2 || i == 4 || i == 5)
         {
@@ -110,9 +111,71 @@ static void popupmenu_activate(gchar *label)
     else if(!strcmp(label, "Quit"))
     {
         gtk_widget_destroy(GTK_WIDGET(mainwindow));
+    } else if(!strcmp(label, "About")) {
+        show_about_dialog();
     }
 
     popupmenu_shown = FALSE;
+}
+
+void show_about_dialog() {
+    GtkWidget *dialog;
+    dialog = gtk_dialog_new();
+    
+    #if GTK_CHECK_VERSION(2, 4, 0)
+        gtk_dialog_set_has_separator(GTK_DIALOG(dialog), FALSE);
+        gtk_container_set_border_width(GTK_CONTAINER(dialog), 5);
+        gtk_box_set_spacing(GTK_BOX(GTK_DIALOG(dialog)->vbox), 5);
+    #endif
+    
+    gtk_dialog_add_button(GTK_DIALOG(dialog), 
+    #if GTK_CHECK_VERSION(2, 4, 0)
+        GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+    #else
+        GTK_STOCK_OK, GTK_RESPONSE_CLOSE);
+    #endif
+    
+    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CLOSE);
+    g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), dialog);
+
+    GtkWidget *vbox = gtk_vbox_new(FALSE, 8); 
+    #if GTK_CHECK_VERSION(2, 4, 0)
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
+    #else
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 8);
+    #endif
+    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), vbox, TRUE, TRUE, 0);
+    
+    GtkWidget *name_and_version = gtk_label_new(NULL);
+    gtk_label_set_selectable(GTK_LABEL(name_and_version), TRUE);
+    gtk_label_set_justify(GTK_LABEL(name_and_version), GTK_JUSTIFY_CENTER);
+    gtk_box_pack_start(GTK_BOX(vbox), name_and_version, FALSE, FALSE, 0);
+    
+    GtkWidget *forked_from = gtk_label_new(NULL);
+    gtk_label_set_selectable(GTK_LABEL(forked_from), TRUE);
+    gtk_label_set_justify(GTK_LABEL(forked_from), GTK_JUSTIFY_CENTER);
+    gtk_box_pack_start(GTK_BOX(vbox), forked_from, FALSE, FALSE, 0);
+    
+    GtkWidget *author = gtk_label_new(NULL);
+    gtk_label_set_selectable(GTK_LABEL(author), TRUE);
+    gtk_label_set_justify(GTK_LABEL(author), GTK_JUSTIFY_CENTER);
+    gtk_box_pack_start(GTK_BOX(vbox), author, FALSE, FALSE, 0);
+    
+    gchar *s_name_and_version = g_strdup_printf("<span size=\"xx-large\" weight=\"bold\">Ftjerm %s (fork of Stjerm)</span>", FTJERM_VERSION);
+    gtk_label_set_markup(GTK_LABEL(name_and_version), s_name_and_version);
+    g_free(s_name_and_version);
+    
+    gchar *s_forked_from = g_strdup_printf("<span size=\"x-large\" weight=\"normal\">forked from Sjterm</span>");
+    gtk_label_set_markup(GTK_LABEL(forked_from), s_forked_from);
+    g_free(s_forked_from);
+    
+    gchar *s_author = g_strdup_printf("<span size=\"medium\" weight=\"normal\">Author: segrived, 2012</span>");
+    gtk_label_set_markup(GTK_LABEL(author), s_author);
+    g_free(s_author);
+    
+    gtk_widget_show_all(vbox);
+    gtk_window_set_title(GTK_WINDOW(dialog), "About Fjterm");
+    gtk_dialog_run (GTK_DIALOG (dialog));
 }
 
 static void popupmenu_deactivate(GtkMenuShell *menushell, gpointer userdata)
