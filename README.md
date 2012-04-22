@@ -1,4 +1,4 @@
-#Ftjerm v.0.01 (fork of Stjerm)
+# Ftjerm v0.01 (fork of Stjerm)
 
 ## Requirements
 pkgconfig, gtk2, vte
