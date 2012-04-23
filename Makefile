@@ -14,14 +14,7 @@ CFLAGS += -Wall -Os $(shell pkg-config --cflags $(PACKAGES))
 SRC = main.c mainwindow.c config.c term.c popupmenu.c shortcut.c
 OBJ = ${SRC:.c=.o}
 
-all: options ftjerm
-
-options:
-	@echo ftjerm build options:
-	@echo "CFLAGS = ${CFLAGS}"
-	@echo "LDFLAGS = ${LDFLAGS}"
-	@echo "CC = ${CC}"
-	@echo "LD = ${LD}"
+all: ftjerm
 
 .c.o:
 	@echo CC $<
@@ -39,8 +32,14 @@ clean:
     
 install: all
 	@echo installing executable file to ${DESTDIR}${BINDIR}
-	@install -Dm755 ftjerm "$(DESTDIR)$(BINDIR)"/ftjerm
+	@install -Dm755 ftjerm "$(DESTDIR)$(BINDIR)/ftjerm"
 	@echo installing manual pages to ${DESTDIR}${MANDIR}
-	@install -Dm644 ftjerm.8 "$(DESTDIR)$(MANDIR)"/ftjerm.8.gz
+	@install -Dm644 ftjerm.8 "$(DESTDIR)$(MANDIR)/ftjerm.8.gz"
+
+uninstall:
+	@echo removing executable file from ${DESTDIR}${BINDIR}
+	@rm -f "$(DESTDIR)$(BINDIR)/ftjerm"
+	@echo removing manual pages from ${DESTDIR}${MANDIR}
+	@rm -f "$(DESTDIR)$(MANDIR)/ftjerm.8.gz"
     
 .PRECIOUS: *.o
