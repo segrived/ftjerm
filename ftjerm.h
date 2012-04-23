@@ -52,7 +52,7 @@
 #define TABS_ONE    1
 #define TABS_ALWAYS 2
 
-#define OPTION_COUNT 28
+#define OPTION_COUNT 30
 
 
 // The following defines borrowed from gnome-terminal:
@@ -148,6 +148,8 @@ extern gboolean conf_get_auto_hide(void);
 extern char* conf_get_bg_image(void);
 extern gboolean conf_get_allow_reorder(void);
 extern gboolean conf_get_scroll_on_output();
+extern int conf_get_cursor_blink(void);
+extern int conf_get_cursor_shape(void);
 
 #endif /* __FTJERM_H__ */
 

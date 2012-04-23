@@ -70,6 +70,8 @@ GtkWidget* build_term(void)
     vte_terminal_set_scroll_on_keystroke(VTE_TERMINAL(term), TRUE);
     vte_terminal_set_font_from_string(VTE_TERMINAL(term), conf_get_font());
     vte_terminal_set_scrollback_lines(VTE_TERMINAL(term), conf_get_lines());
+    vte_terminal_set_cursor_blink_mode(VTE_TERMINAL(term), conf_get_cursor_blink());
+    vte_terminal_set_cursor_shape(VTE_TERMINAL(term), conf_get_cursor_shape());
     vte_terminal_set_backspace_binding(VTE_TERMINAL(term), 
         VTE_ERASE_ASCII_DELETE);
     vte_terminal_set_word_chars(VTE_TERMINAL(term),

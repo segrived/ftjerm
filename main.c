@@ -86,11 +86,11 @@ void print_info(void)
     for(i = 0; i < OPTION_COUNT; i++)
     {
         o = options[i];
-        printf("  %s:  \t%s      \t%s\n", o.long_name, o.var_type, o.desc);
+        printf("  %-20s: %-10s %s\n", o.long_name, o.var_type, o.desc);
     }
     
-    printf("\t\t\t\tYou may specify no palette, or a complete one with 16 total colors.\n"
-           "\t\t\t\tFor this you have to use color0, color1, ..., color15.\n");
+    printf("\nYou may specify no palette, or a complete one with 16 total colors.\n"
+           "For this you have to use color0, color1, ..., color15.\n");
 }
 
 void print_version(void)

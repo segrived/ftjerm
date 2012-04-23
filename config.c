@@ -32,6 +32,7 @@
 #include <unistd.h>
 #include <pwd.h>
 #include <signal.h>
+#include <vte/vte.h>
 #include "ftjerm.h"
 
 extern int sargc;
@@ -70,12 +71,16 @@ static gboolean _autohide;
 static char _bgimage[200];
 static gboolean _scrolloutput;
 static gboolean _allowreorder;
+static int _cursorblink;
+static int _cursorshape;
 
 static void set_border(char*);
 static void set_mod(char*);
 static void set_key(char*);
 static void set_fullscreen_key(char*);
 static void set_pos(char *v);
+static void set_cursor_blink(char*);
+static void set_cursor_shape(char*);
 static GtkPositionType read_pos(char *v);
 static gboolean parse_hex_color(char *value, GdkColor *color);
 static gboolean parse_bool_str(char *value, gboolean def);
@@ -113,6 +118,8 @@ gboolean conf_get_auto_hide(void);
 char* conf_get_bg_image(void);
 gboolean conf_get_scroll_on_output(void);
 gboolean conf_get_allow_reorder(void);
+int conf_get_cursor_blink(void);
+int conf_get_cursor_shape(void);
 
 Option options[OPTION_COUNT] = {
     {"key", "-k", "KEY", "Shortcut key (eg: f12)."},
@@ -142,6 +149,8 @@ Option options[OPTION_COUNT] = {
     {"fixedx", "-fx", "NUMBER", "Overrides any calculated horizontal position."},
     {"fixedy", "-fy", "NUMBER", "Overrides any calculated vertical position."},
     {"allowreorder", "-ar", "BOOLEAN", "Allow reordering of terminal tabs."},
+    {"cursorblink", "-cb", "STRING", "Cursor blink: system, on, off. Default: system."},
+    {"cursorshape", "-cs", "STRING", "Cursor shape: block, ibeam, underline. Default: block."},
     {"colorX", "-cX", "COLOR", "Specify color X of the terminals color palette"}
 };
 
@@ -244,6 +253,26 @@ void set_pos(char *v)
         _pos = POS_BOTTOMRIGHT;
 }
 
+void set_cursor_blink(char *v)
+{
+    if (!strcmp(v, "system"))
+        _cursorblink = VTE_CURSOR_BLINK_SYSTEM;
+    else if (!strcmp(v, "on"))
+        _cursorblink = VTE_CURSOR_BLINK_ON;
+    else if (!strcmp(v, "off"))
+        _cursorblink = VTE_CURSOR_BLINK_OFF;
+}
+
+void set_cursor_shape(char *v)
+{
+    if (!strcmp(v, "block"))
+        _cursorshape = VTE_CURSOR_SHAPE_BLOCK;
+    else if (!strcmp(v, "ibeam"))
+        _cursorshape = VTE_CURSOR_SHAPE_IBEAM;
+    else if (!strcmp(v, "underline"))
+        _cursorshape = VTE_CURSOR_SHAPE_UNDERLINE;
+}
+
 GtkPositionType read_pos(char *v)
 {
     if(!strcmp(v, "top"))
@@ -332,6 +361,8 @@ void init_default_values(void)
     _fixedx = -1;
     _fixedy = -1;
     _allowreorder = TRUE;
+    _cursorblink = VTE_CURSOR_BLINK_SYSTEM;
+    _cursorshape = VTE_CURSOR_SHAPE_BLOCK;
 }
 
 void read_value(char *name, char *value)
@@ -389,6 +420,10 @@ void read_value(char *name, char *value)
             set_key(value);
         else if(!strcmp("fullscreenkey", name) || !strcmp("-fk", name))
             set_fullscreen_key(value);
+        else if (!strcmp("cursorblink", name) || !strcmp("-cb", name))
+            set_cursor_blink(value);
+        else if (!strcmp("cursorshape", name) || !strcmp("-cs", name))
+            set_cursor_shape(value);
         else if(!strcmp("shell", name) || !strcmp("-sh", name))
             strcpy(_shell, value);
         else if(!strcmp("emulation", name) || !strcmp("-e", name))
@@ -822,4 +857,14 @@ gboolean conf_get_scroll_on_output(void)
 gboolean conf_get_allow_reorder(void)
 {
     return _allowreorder;
+}
+
+int conf_get_cursor_blink(void)
+{
+    return _cursorblink;
+}
+
+int conf_get_cursor_shape(void)
+{
+    return _cursorshape;
 }
