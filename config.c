@@ -44,7 +44,7 @@ static GdkColor _fg;
 static int _border;
 static unsigned int _mod;
 static KeySym _key;
-static char _fullscreenkey[3];
+static char _fullscreenkey[10];
 static int _width;
 static int _height;
 static int _width_percent;
@@ -220,9 +220,7 @@ void set_key(char *v)
 
 void set_fullscreen_key(char *v)
 {
-    int i;
-    for(i = 0; i < strlen(v); i++)
-        v[i] = toupper(v[i]);
+    v[0] = toupper(v[0]);
     strcpy(_fullscreenkey, v);
 }
 
