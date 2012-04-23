@@ -129,6 +129,7 @@ extern GdkColor conf_get_fg(void);
 extern int conf_get_border(void);
 extern unsigned int conf_get_mod(void);
 extern KeySym conf_get_key(void);
+extern char* conf_get_fullscreen_key(void);
 extern int conf_get_width(void);
 extern int conf_get_height(void);
 extern void conf_get_position(int*, int*);
