@@ -165,11 +165,11 @@ void show_about_dialog() {
     gtk_label_set_markup(GTK_LABEL(name_and_version), s_name_and_version);
     g_free(s_name_and_version);
     
-    gchar *s_forked_from = g_strdup_printf("<span size=\"x-large\" weight=\"normal\">forked from Sjterm</span>");
+    gchar *s_forked_from = g_strdup_printf("<span size=\"x-large\" weight=\"normal\">Quake-like terminal emulator</span>");
     gtk_label_set_markup(GTK_LABEL(forked_from), s_forked_from);
     g_free(s_forked_from);
     
-    gchar *s_author = g_strdup_printf("<span size=\"medium\" weight=\"normal\">Author: segrived, 2012</span>");
+    gchar *s_author = g_strdup_printf("<span size=\"medium\" weight=\"normal\">Author: Holden Cox, 2012</span>");
     gtk_label_set_markup(GTK_LABEL(author), s_author);
     g_free(s_author);
     
