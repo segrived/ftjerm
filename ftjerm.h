@@ -52,7 +52,7 @@
 #define TABS_ONE    1
 #define TABS_ALWAYS 2
 
-#define OPTION_COUNT 27
+#define OPTION_COUNT 28
 
 
 // The following defines borrowed from gnome-terminal:

@@ -202,32 +202,6 @@ static void term_app_request(VteTerminal *term, gpointer user_data)
     }
 }
 
-/*static void term_app_request_resize_move(VteTerminal *term, guint x, guint y,
-    gpointer user_data)
-{
-    // FIXME I can't get this function to call. It may be unused?
-    
-    int event = GPOINTER_TO_INT(user_data);
-
-    if(event == TERM_RESIZE_WINDOW)
-    {
-        gint owidth, oheight, xpad, ypad;
-
-        gtk_window_get_size(GTK_WINDOW(mainwindow), &owidth, &oheight);
-        owidth -= term->char_width * term->column_count;
-        oheight -= term->char_height * term->row_count;
-        
-        vte_terminal_get_padding(term, &xpad, &ypad);=
-        
-        owidth -= xpad;
-        oheight -= ypad;
-        gtk_window_resize(GTK_WINDOW(mainwindow), x+owidth, y+oheight);
-    }
-    
-    if(event == TERM_MOVE_WINDOW)
-        gdk_window_move(GTK_WIDGET(mainwindow)->window, x, y);
-}*/
-
 static void term_fork_command(VteTerminal *term, char *cmd)
 {
     #if VTE_CHECK_VERSION(0,25,0)

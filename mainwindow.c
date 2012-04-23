@@ -127,9 +127,9 @@ void build_mainwindow(void)
 
     maximize = g_cclosure_new_swap(G_CALLBACK(mainwindow_toggle_fullscreen),
         NULL, NULL);
-    gtk_accel_group_connect(accel_group, GDK_F11, 0,
+    gtk_accel_group_connect(accel_group, gdk_keyval_from_name(conf_get_fullscreen_key()), 0,
         GTK_ACCEL_VISIBLE, maximize);
-
+    
     new_tab = g_cclosure_new_swap(G_CALLBACK(mainwindow_new_tab), 
         NULL, NULL);
     gtk_accel_group_connect(accel_group, 't', conf_get_key_mod(),

@@ -38,6 +38,9 @@ Show/hide the current \fBftjerm\fR instance.
 .B "key, \-k"
 Shortcut key which shows and hides \fBftjerm\fR (eg: f12). If you don't specify a shortcut key, you can only show/hide \fBftjerm\fR if you run \fBftjerm\fR with \fI\-\-toggle\fR.
 .TP
+.B "fullscreenkey, \-fk"
+Shortcut key which toggle fullscreen mode of \fBftjerm\fR (eg: f2). Default: \fIF11\fR.
+.TP
 .B "mod, \-m"
 Modifier key, which has to be pressed in combination with the shortcut key to show/hide
 .B ftjerm
@@ -120,6 +123,7 @@ To run ftjerm with F12 as shortcut key, the opacity of 60 and a green foreground
  ftjerm -k f12 -o 60 -fg 66ff11
 To specify the same options in the .Xdefaults file, write this in your .Xdefaults file:
  ftjerm.key: f12
+ fjterm.fullscreenkey: f2
  ftjerm.opacity: 60
  ftjerm.foreground: #66ff11
 .SH "REPORTING BUGS"

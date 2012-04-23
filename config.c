@@ -44,6 +44,7 @@ static GdkColor _fg;
 static int _border;
 static unsigned int _mod;
 static KeySym _key;
+static char _fullscreenkey[3];
 static int _width;
 static int _height;
 static int _width_percent;
@@ -73,6 +74,7 @@ static gboolean _allowreorder;
 static void set_border(char*);
 static void set_mod(char*);
 static void set_key(char*);
+static void set_fullscreen_key(char*);
 static void set_pos(char *v);
 static GtkPositionType read_pos(char *v);
 static gboolean parse_hex_color(char *value, GdkColor *color);
@@ -101,6 +103,7 @@ char* conf_get_emulation(void);
 int conf_get_lines(void);
 int conf_get_show_tab(void);
 char* conf_get_term_name(void);
+char* conf_get_fullscreen_key(void);
 GtkPositionType conf_get_tab_pos(void);
 GdkColor* conf_get_color_palette(void);
 gboolean conf_get_tab_fill(void);
@@ -113,6 +116,7 @@ gboolean conf_get_allow_reorder(void);
 
 Option options[OPTION_COUNT] = {
     {"key", "-k", "KEY", "Shortcut key (eg: f12)."},
+    {"fullscreenkey", "-fk", "KEY", "Toggle fullscreen shortcut key (eg: f11)."},
     {"mod", "-m", "MODIFIER", "meta modifier key: shift, control, alt, windows, none."},
     {"keymod", "-km", "MODIFIER", "Modifier for keyboard shortcuts. Can be a combination (with +) of modifiers (eg: shift+control)."},
     {"autohide", "-ah", "BOOLEAN", "Whether or not to hide ftjerm when it looses focus. Default: true."},
@@ -214,6 +218,14 @@ void set_key(char *v)
     }
 }
 
+void set_fullscreen_key(char *v)
+{
+    int i;
+    for(i = 0; i < strlen(v); i++)
+        v[i] = toupper(v[i]);
+    strcpy(_fullscreenkey, v);
+}
+
 void set_pos(char *v)
 {
     if(!strcmp(v, "top"))
@@ -306,6 +318,7 @@ void init_default_values(void)
     _pos = POS_TOP;
     _mod = 0;
     _key = 0;
+    strcpy(_fullscreenkey, "F11");
     strcpy(_shell, getpwuid(getuid())->pw_shell);
     strcpy(_emulation, "xterm");
     _lines = 1000;
@@ -376,6 +389,8 @@ void read_value(char *name, char *value)
             set_mod(value);
         else if(!strcmp("key", name) || !strcmp("-k", name))
             set_key(value);
+        else if(!strcmp("fullscreenkey", name) || !strcmp("-fk", name))
+            set_fullscreen_key(value);
         else if(!strcmp("shell", name) || !strcmp("-sh", name))
             strcpy(_shell, value);
         else if(!strcmp("emulation", name) || !strcmp("-e", name))
@@ -685,6 +700,11 @@ float conf_get_opacity(void)
 GdkColor conf_get_bg(void)
 {
     return _bg;
+}
+
+char* conf_get_fullscreen_key(void)
+{
+    return _fullscreenkey;
 }
 
 GdkColor conf_get_fg(void)
