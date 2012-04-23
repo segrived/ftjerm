@@ -52,7 +52,7 @@
 #define TABS_ONE    1
 #define TABS_ALWAYS 2
 
-#define OPTION_COUNT 30
+#define OPTION_COUNT 31
 
 
 // The following defines borrowed from gnome-terminal:
@@ -150,6 +150,7 @@ extern gboolean conf_get_allow_reorder(void);
 extern gboolean conf_get_scroll_on_output();
 extern int conf_get_cursor_blink(void);
 extern int conf_get_cursor_shape(void);
+extern gboolean conf_get_mouse_autohide(void);
 
 #endif /* __FTJERM_H__ */
 

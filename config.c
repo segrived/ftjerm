@@ -71,6 +71,7 @@ static gboolean _autohide;
 static char _bgimage[200];
 static gboolean _scrolloutput;
 static gboolean _allowreorder;
+static gboolean _mouseautohide;
 static int _cursorblink;
 static int _cursorshape;
 
@@ -81,6 +82,8 @@ static void set_fullscreen_key(char*);
 static void set_pos(char *v);
 static void set_cursor_blink(char*);
 static void set_cursor_shape(char*);
+static void set_mouse_autohide(char*);
+
 static GtkPositionType read_pos(char *v);
 static gboolean parse_hex_color(char *value, GdkColor *color);
 static gboolean parse_bool_str(char *value, gboolean def);
@@ -120,6 +123,7 @@ gboolean conf_get_scroll_on_output(void);
 gboolean conf_get_allow_reorder(void);
 int conf_get_cursor_blink(void);
 int conf_get_cursor_shape(void);
+gboolean conf_get_mouse_autohide(void);
 
 Option options[OPTION_COUNT] = {
     {"key", "-k", "KEY", "Shortcut key (eg: f12)."},
@@ -151,6 +155,7 @@ Option options[OPTION_COUNT] = {
     {"allowreorder", "-ar", "BOOLEAN", "Allow reordering of terminal tabs."},
     {"cursorblink", "-cb", "STRING", "Cursor blink: system, on, off. Default: system."},
     {"cursorshape", "-cs", "STRING", "Cursor shape: block, ibeam, underline. Default: block."},
+    {"mouseautohide", "-ma", "BOOLEAN", "Mouse autohide when the user presses a key: true, false. Default: false."},
     {"colorX", "-cX", "COLOR", "Specify color X of the terminals color palette"}
 };
 
@@ -273,6 +278,11 @@ void set_cursor_shape(char *v)
         _cursorshape = VTE_CURSOR_SHAPE_UNDERLINE;
 }
 
+void set_mouse_autohide(char* flag)
+{
+    _mouseautohide = parse_bool_str(flag, _mouseautohide);
+}
+
 GtkPositionType read_pos(char *v)
 {
     if(!strcmp(v, "top"))
@@ -363,6 +373,7 @@ void init_default_values(void)
     _allowreorder = TRUE;
     _cursorblink = VTE_CURSOR_BLINK_SYSTEM;
     _cursorshape = VTE_CURSOR_SHAPE_BLOCK;
+    _mouseautohide = FALSE;
 }
 
 void read_value(char *name, char *value)
@@ -424,6 +435,8 @@ void read_value(char *name, char *value)
             set_cursor_blink(value);
         else if (!strcmp("cursorshape", name) || !strcmp("-cs", name))
             set_cursor_shape(value);
+        else if (!strcmp("mouseautohide", name) || !strcmp("-ma", name))
+            set_mouse_autohide(value);
         else if(!strcmp("shell", name) || !strcmp("-sh", name))
             strcpy(_shell, value);
         else if(!strcmp("emulation", name) || !strcmp("-e", name))
@@ -839,6 +852,11 @@ GdkModifierType conf_get_key_mod(void)
 gboolean conf_get_auto_hide(void)
 {
     return _autohide;
+}
+
+gboolean conf_get_mouse_autohide(void)
+{
+    return _mouseautohide;
 }
 
 char* conf_get_bg_image(void)

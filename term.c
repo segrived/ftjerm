@@ -34,7 +34,6 @@ static void term_connect_signals(GtkWidget*);
 static gboolean term_button_press(GtkWidget*, GdkEventButton*, gpointer);
 static void term_eof_or_child_exited(VteTerminal*, gpointer);
 static void term_app_request(VteTerminal*, gpointer);
-//static void term_app_request_resize_move(VteTerminal*, guint, guint, gpointer);
 static void term_fork_command(VteTerminal*, char*);
 
 GtkWidget* build_term(void)
@@ -54,17 +53,15 @@ GtkWidget* build_term(void)
     back = conf_get_bg();
     GdkColor *palette = conf_get_color_palette();
     
-    if(palette == NULL)
+    if(palette == NULL) {
         vte_terminal_set_colors(VTE_TERMINAL(term), &fore, &back, NULL, 0);
-    else
+    } else {
         vte_terminal_set_colors(VTE_TERMINAL(term), &fore, &back, palette, 16);
-    
+    }
     #if VTE_CHECK_VERSION(0,25,0)
-    vte_pty_set_term(vte_terminal_get_pty_object(VTE_TERMINAL(term)), conf_get_emulation());
+        vte_pty_set_term(vte_terminal_get_pty_object(VTE_TERMINAL(term)), conf_get_emulation());
     #endif
-    
     vte_terminal_set_background_tint_color(VTE_TERMINAL(term), &back);
-
     vte_terminal_set_allow_bold(VTE_TERMINAL(term), conf_get_allow_bold());
     vte_terminal_set_scroll_on_output(VTE_TERMINAL(term), conf_get_scroll_on_output());
     vte_terminal_set_scroll_on_keystroke(VTE_TERMINAL(term), TRUE);
@@ -72,44 +69,25 @@ GtkWidget* build_term(void)
     vte_terminal_set_scrollback_lines(VTE_TERMINAL(term), conf_get_lines());
     vte_terminal_set_cursor_blink_mode(VTE_TERMINAL(term), conf_get_cursor_blink());
     vte_terminal_set_cursor_shape(VTE_TERMINAL(term), conf_get_cursor_shape());
-    vte_terminal_set_backspace_binding(VTE_TERMINAL(term), 
-        VTE_ERASE_ASCII_DELETE);
-    vte_terminal_set_word_chars(VTE_TERMINAL(term),
-        "-A-Za-z0-9_$.+!*(),;:@&=?/~#%");
-
+    vte_terminal_set_mouse_autohide(VTE_TERMINAL(term), conf_get_mouse_autohide());
+    vte_terminal_set_backspace_binding(VTE_TERMINAL(term), VTE_ERASE_ASCII_DELETE);
+    vte_terminal_set_word_chars(VTE_TERMINAL(term), "-A-Za-z0-9_$.+!*(),;:@&=?/~#%");
     term_connect_signals(term);
-
     return term;
 }
 
 static void term_connect_signals(GtkWidget *term)
 {
-    g_signal_connect_swapped(G_OBJECT(term), "button-press-event",
-        G_CALLBACK(term_button_press), NULL);
-
-    g_signal_connect (G_OBJECT(term), "eof",
-        G_CALLBACK(term_eof_or_child_exited), NULL);
-    g_signal_connect (G_OBJECT(term), "child-exited",
-        G_CALLBACK(term_eof_or_child_exited), NULL);
-
-    g_signal_connect(G_OBJECT(term), "iconify-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_ICONIFY_WINDOW);
-    g_signal_connect(G_OBJECT(term), "deiconify-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_DEICONIFY_WINDOW);
-    g_signal_connect(G_OBJECT(term), "raise-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_RAISE_WINDOW);
-    g_signal_connect(G_OBJECT(term), "lower-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_LOWER_WINDOW);
-    g_signal_connect(G_OBJECT(term), "maximize-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_MAXIMIZE_WINDOW);
-    g_signal_connect(G_OBJECT(term), "restore-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_RESTORE_WINDOW);
-    g_signal_connect(G_OBJECT(term), "refresh-window",
-        G_CALLBACK(term_app_request), (gpointer)TERM_REFRESH_WINDOW);
-    /*g_signal_connect(G_OBJECT(term), "resize-window",
-        G_CALLBACK(term_app_request_resize_move), (gpointer)TERM_RESIZE_WINDOW);
-    g_signal_connect(G_OBJECT(term), "move-window",
-        G_CALLBACK(term_app_request_resize_move), (gpointer)TERM_MOVE_WINDOW);*/
+    g_signal_connect_swapped(G_OBJECT(term), "button-press-event", G_CALLBACK(term_button_press), NULL);
+    g_signal_connect (G_OBJECT(term), "eof", G_CALLBACK(term_eof_or_child_exited), NULL);
+    g_signal_connect (G_OBJECT(term), "child-exited", G_CALLBACK(term_eof_or_child_exited), NULL);
+    g_signal_connect(G_OBJECT(term), "iconify-window", G_CALLBACK(term_app_request), (gpointer)TERM_ICONIFY_WINDOW);
+    g_signal_connect(G_OBJECT(term), "deiconify-window", G_CALLBACK(term_app_request), (gpointer)TERM_DEICONIFY_WINDOW);
+    g_signal_connect(G_OBJECT(term), "raise-window", G_CALLBACK(term_app_request), (gpointer)TERM_RAISE_WINDOW);
+    g_signal_connect(G_OBJECT(term), "lower-window", G_CALLBACK(term_app_request), (gpointer)TERM_LOWER_WINDOW);
+    g_signal_connect(G_OBJECT(term), "maximize-window", G_CALLBACK(term_app_request), (gpointer)TERM_MAXIMIZE_WINDOW);
+    g_signal_connect(G_OBJECT(term), "restore-window", G_CALLBACK(term_app_request), (gpointer)TERM_RESTORE_WINDOW);
+    g_signal_connect(G_OBJECT(term), "refresh-window", G_CALLBACK(term_app_request), (gpointer)TERM_REFRESH_WINDOW);
 }
 
 static CursorMatch term_cursor_match_pattern(GdkEventButton* event)
