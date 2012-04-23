@@ -26,7 +26,7 @@
 #include <gtk/gtk.h>
 #include <X11/Xlib.h>
 
-#define FTJERM_VERSION "0.1"
+#define FTJERM_VERSION "0.11"
 
 #define TERM_ICONIFY_WINDOW    0
 #define TERM_DEICONIFY_WINDOW  1
