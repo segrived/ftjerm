@@ -16,13 +16,13 @@ pkgconfig, gtk2, vte
 
 ## Installation / Uninstallation
 `sudo make install` for installation
+
 `sudo make uninstall` for uninstallation
 
 ## Running
 Simply run: ftjerm.
 
 ## Actions
-
 __--help__: Displays menu with commandline options.
 
 __--info__: Displays menu with .Xdefaults options.
@@ -91,3 +91,16 @@ __fixedX, -fX__: Overrides the calculated horizontal position of the window. Spe
 __fixedY, -fY__: Overrides the calculated vertical position of the window. Specifies the location of the top of the window.
 
 __allowreorder, -ar__: Allows the tabs of the tab bar to be reordered.
+
+## Authors
+Copyright (C) 2012 - Holden Cox <segrived@gmail.com>
+Copyright (C) 2011 - Mihail Szabolcs <szaby@szabster.net> (cursor blink and cursor shape parameters)
+Copyright (C) 2008 - Kristopher Wilson <kristopherwilson@gmail.com>
+Copyright (C) 2007 - Stjepan Glavina <stjepang@gmail.com>
+Copyright (C) 2007 - Markus Gross <xsdnyd@gmail.com>
+
+## License
+See __LICENSE__
+
+## Contact
+Feature requests, patches or anything else related to ftjerm can be send to: segrived@gmail.com
