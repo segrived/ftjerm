@@ -32,8 +32,10 @@ __--version__: Display the current application version.
 __--toggle__: Show/hide the current ftjerm instance.
 
 ## Options
-<p>__key, -k__: Shortcut key which shows and hides ftjerm (eg: f12). If you don't specify a shortcut key, you  can only show/hide ftjerm if you run ftjerm with --toggle.</p>
-<p>__fullscreenkey, -fk__: Shortcut key which toggle fullscreen mode of ftjerm (eg: f2). _Default: F11._</p>
+<pre>
+__key, -k__: Shortcut key which shows and hides ftjerm (eg: f12). If you don't specify a shortcut key, you  can only show/hide ftjerm if you run ftjerm with --toggle.
+
+__fullscreenkey, -fk__: Shortcut key which toggle fullscreen mode of ftjerm (eg: f2). _Default: F11._
 
 __mod, -m__: Modifier  key,  which has to be pressed in combination with the shortcut key to show/hide ftjerm: shift, control, alt, windows, none. _Default: none._
 
@@ -90,7 +92,7 @@ __fixedX, -fX__: Overrides the calculated horizontal position of the window. Spe
 __fixedY, -fY__: Overrides the calculated vertical position of the window. Specifies the location of the top of the window.
 
 __allowreorder, -ar__: Allows the tabs of the tab bar to be reordered.
-
+</pre>
 ## Authors
     Copyright (C) 2012 - Holden Cox <segrived@gmail.com>
     Copyright (C) 2011 - Mihail Szabolcs <szaby@szabster.net> (cursor blink and cursor shape parameters)
