@@ -1,4 +1,4 @@
-# Ftjerm v0.12 (fork of Stjerm)
+# Ftjerm v0.12.1 (fork of Stjerm)
 ===============================
 __Ftjerm__ is a quake-style terminal and a fork of __Stjerm__. It is minimalistic and works well with compiz. Ftjerm can be configured via commandline or the .Xdefaults file.
 
@@ -20,8 +20,15 @@ pkgconfig, gtk2, vte
 
 `sudo make uninstall` for uninstallation
 
+Arch Linux users can install __Ftjerm__ from AUR: https://aur.archlinux.org/packages.php?ID=58754
+
+## Changelog
+### Version 0.12.1
+* __Added__: _showonstart_ option
+* __Fixed__: Unescaped dashes in manpage.
+
 ## Running
-Simply run: ftjerm.
+Simply run: __ftjerm__.
 
 ## Actions
 __--help__: Displays menu with commandline options.
@@ -92,6 +99,8 @@ __fixedX, -fX__: Overrides the calculated horizontal position of the window. Spe
 __fixedY, -fY__: Overrides the calculated vertical position of the window. Specifies the location of the top of the window.
 
 __allowreorder, -ar__: Allows the tabs of the tab bar to be reordered.
+
+__showonstart, -ss__: Show terminal window on start: true, false. _Default: false._
 
 ## Authors
     Copyright (C) 2012 - Holden Cox <segrived@gmail.com>
