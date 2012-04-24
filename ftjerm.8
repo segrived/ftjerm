@@ -115,6 +115,9 @@ Cursor shape: block, ibeam, underline. Default: \fIblock\fR.
 .B "mouseautohide, \-ma"
 Hide cursor when the user presses a key and shown when the user moves the mouse. Default: \fIfalse\fR.
 .TP
+.B "showonstart, \-ss"
+Show terminal window on start: true, false. Default: \fIfalse\fR.
+.TP
 .B "colorX, \-cX"
 Specify color X of the terminals color palette. You may specify no palette, or a complete one with 16 total colors.
 For this you have to use \-c0, \-c1, ..., \-c15 or the equivalent color0, color1,... color15.
@@ -129,12 +132,13 @@ Overrides the calculated vertical position of the window. Specifies the location
 Allows the tabs of the tab bar to be reordered.
 .SH EXAMPLES
 To run ftjerm with F12 as shortcut key, the opacity of 60 and a green foreground color, use:
- ftjerm -k f12 -o 60 -fg 66ff11
+  ftjerm \-k f12 \-o 60 \-fg 66ff11
+  
 To specify the same options in the .Xdefaults file, write this in your .Xdefaults file:
- ftjerm.key: f12
- fjterm.fullscreenkey: f2
- ftjerm.opacity: 60
- ftjerm.foreground: #66ff11
+  ftjerm.key: f12
+  fjterm.fullscreenkey: f2
+  ftjerm.opacity: 60
+  ftjerm.foreground: #66ff11
 .SH "REPORTING BUGS"
 Report bugs to <segrived@gmail.com>.
 .SH COPYRIGHT

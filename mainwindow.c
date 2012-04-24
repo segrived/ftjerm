@@ -236,6 +236,9 @@ void build_mainwindow(void)
     init_key();
     grab_key();
     g_thread_create((GThreadFunc)wait_key, NULL, FALSE, NULL);
+    
+    if (conf_get_show_onstart())
+        mainwindow_toggle(0);
 }
 
 void mainwindow_notebook_clicked(GtkWidget *widget, GdkEventButton *event, gpointer func_data)

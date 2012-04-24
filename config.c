@@ -72,6 +72,7 @@ static char _bgimage[200];
 static gboolean _scrolloutput;
 static gboolean _allowreorder;
 static gboolean _mouseautohide;
+static gboolean _showonstart;
 static int _cursorblink;
 static int _cursorshape;
 
@@ -83,6 +84,7 @@ static void set_pos(char *v);
 static void set_cursor_blink(char*);
 static void set_cursor_shape(char*);
 static void set_mouse_autohide(char*);
+static void set_show_onstart(char*);
 
 static GtkPositionType read_pos(char *v);
 static gboolean parse_hex_color(char *value, GdkColor *color);
@@ -124,6 +126,7 @@ gboolean conf_get_allow_reorder(void);
 int conf_get_cursor_blink(void);
 int conf_get_cursor_shape(void);
 gboolean conf_get_mouse_autohide(void);
+gboolean conf_get_show_onstart(void);
 
 Option options[OPTION_COUNT] = {
     {"key", "-k", "KEY", "Shortcut key (eg: f12)."},
@@ -156,6 +159,7 @@ Option options[OPTION_COUNT] = {
     {"cursorblink", "-cb", "STRING", "Cursor blink: system, on, off. Default: system."},
     {"cursorshape", "-cs", "STRING", "Cursor shape: block, ibeam, underline. Default: block."},
     {"mouseautohide", "-ma", "BOOLEAN", "Mouse autohide when the user presses a key: true, false. Default: false."},
+    {"showonstart", "-ss", "BOOLEAN", "Show terminal window on start: true, false. Default: false"},
     {"colorX", "-cX", "COLOR", "Specify color X of the terminals color palette"}
 };
 
@@ -283,6 +287,11 @@ void set_mouse_autohide(char* flag)
     _mouseautohide = parse_bool_str(flag, _mouseautohide);
 }
 
+void set_show_onstart(char *flag)
+{
+    _showonstart = parse_bool_str(flag, _showonstart);
+}
+
 GtkPositionType read_pos(char *v)
 {
     if(!strcmp(v, "top"))
@@ -374,6 +383,7 @@ void init_default_values(void)
     _cursorblink = VTE_CURSOR_BLINK_SYSTEM;
     _cursorshape = VTE_CURSOR_SHAPE_BLOCK;
     _mouseautohide = FALSE;
+    _showonstart = FALSE;
 }
 
 void read_value(char *name, char *value)
@@ -437,6 +447,8 @@ void read_value(char *name, char *value)
             set_cursor_shape(value);
         else if (!strcmp("mouseautohide", name) || !strcmp("-ma", name))
             set_mouse_autohide(value);
+        else if (!strcmp("showonstart", name) || !strcmp("-ss", name))
+            set_show_onstart(value);
         else if(!strcmp("shell", name) || !strcmp("-sh", name))
             strcpy(_shell, value);
         else if(!strcmp("emulation", name) || !strcmp("-e", name))
@@ -857,6 +869,11 @@ gboolean conf_get_auto_hide(void)
 gboolean conf_get_mouse_autohide(void)
 {
     return _mouseautohide;
+}
+
+gboolean conf_get_show_onstart(void)
+{
+    return _showonstart;
 }
 
 char* conf_get_bg_image(void)
