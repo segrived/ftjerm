@@ -465,7 +465,6 @@ void mainwindow_toggle_fullscreen(void)
 static void mainwindow_reset_position(void)
 {
     int x, y;
-
     conf_get_position(&x, &y);
     gtk_window_move(GTK_WINDOW(mainwindow), x, y);
     gtk_window_resize(GTK_WINDOW(mainwindow), conf_get_width(), conf_get_height());
@@ -473,9 +472,7 @@ static void mainwindow_reset_position(void)
 
 static void mainwindow_show(GtkWidget *widget, gpointer userdata)
 {
-    if(dpy != NULL)
-        return;
-
+    if(dpy != NULL) return;
     mw_xwin = GDK_WINDOW_XWINDOW(GTK_WIDGET(mainwindow)->window);
     dpy = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
 }
@@ -485,17 +482,11 @@ static void mainwindow_focus_out_event(GtkWindow* window, GdkEventFocus* event, 
     int revert;
     Window w;
     XGetInputFocus(dpy, &w, &revert);
-
-    if (w == mw_xwin)
-        return;
-
+    
+    if (w == mw_xwin) return;
     // focus wasn't lost just by pressing the shortcut key
-
-    if(popupmenu_shown == TRUE)
-        return;
-        
+    if(popupmenu_shown == TRUE) return;
     // focus wasn't lost by popping up popupmenu
-
     gtk_widget_hide(GTK_WIDGET(mainwindow));
 }
 
@@ -503,9 +494,7 @@ static gboolean mainwindow_expose_event(GtkWidget *widget, GdkEventExpose *event
 {
     gint winw, winh;
     gtk_window_get_size(GTK_WINDOW(widget), &winw, &winh);
-
-    gdk_draw_rectangle(widget->window, widget->style->black_gc, FALSE, 0, 0,
-        winw-1, winh-1);
+    gdk_draw_rectangle(widget->window, widget->style->black_gc, FALSE, 0, 0, winw - 1, winh - 1);
 
     //if(conf_get_border() == 1)
     //    return FALSE;
