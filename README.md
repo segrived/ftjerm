@@ -5,7 +5,7 @@ __Ftjerm__ is a quake-style terminal and a fork of __Stjerm__. It is minimalisti
 The following list of options displays the .Xdefaults option first and then the commandline option. The commandline options have a higher priority and thus override the .Xdefaults options.
 
 ## Improvements over the original version of Stjerm:
-* __Improved__: completely rewritten Makefile.
+* __Improved__: completely rewritten Makefile (no more autoconf / autogen).
 * __Added__: setting custom border width (not only choosing one of the proposed styles). _(key -b)_
 * __Added__: setting custom key for switching to the full-screen mode. _(key -fk)_
 * __Added__: turning on/off text cursor blinking. _(key -cb)_
