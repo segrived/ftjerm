@@ -30,3 +30,15 @@ __mod, -m__: Modifier  key,  which has to be pressed in combination with the sho
 __keymod, -km__: Modifier for keyboard shortcuts. Can be a combination (with +)  of  modifiers  (eg:  control+alt). _Default: control+shift._
 
 __autohide, -ah__: Whether or not to hide ftjerm when it looses focus. _Default: true._
+
+__font, -fn__: Terminal font and size (eg: Sans 10). _Default: Fixed 9._
+
+__background, -bg__: Background  color of the terminal. If the terminal is transparent this is the tint color. _Default: Black._
+
+__foreground, -fg__: Foreground color of the terminal. This is the font color. _Default: White._
+
+__allowbold, -ab__: Allow bold fonts or not. _Default: true_
+
+__border, -b__: Border width. _Default: 0._
+
+
