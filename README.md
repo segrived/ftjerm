@@ -41,4 +41,42 @@ __allowbold, -ab__: Allow bold fonts or not. _Default: true_
 
 __border, -b__: Border width. _Default: 0._
 
+__opacity, -o__: Opacity _(range: 10 - 100)_. If compositing is enabled ftjerm will use real transparency.  Otherwise you get pseudo-transparency.
 
+__bgimage, -bgimg__: Background image file. Specify the filename. _Default: disabled._
+
+__width, -w__: Window width, either as an integer or a percentage (eg, 50%). _Default: 800._
+
+__height, -h__: Window height, either as an integer or a percentage (eg, 50%). _Default: 400._
+
+__position, -p__: Window position: top, bottom, left, right. _Default: top._
+
+__scrollbar, -s__: Scrollbar position: left, right, none. _Default: none._
+
+__shell, -sh__: Terminal shell. _Default: the user's default shell._
+
+__lines, -l__: Scrollback lines. 0 to disable scrollback. _Default: 1000._
+
+__showtab, -st__: Tabbar  visibility:  never,  one,  always. One means the tabbar is visible if more than one tab is opened. _Default: one._
+
+__tabpos, -tp__: Tabbar position: top, bottom, left, right. _Default: bottom._
+
+__tablabel, -tl__: Label of the tabs. The terminal number gets appended automatically. _Default: term._
+
+__tabfill, -tf__: Whether tabs fill whole tabbar space. _Default: true._
+
+__scroll, -sc__:  Whether to scroll the terminal on output. _Default: true._
+
+__cursorblink, -cb__: Cursor blink: system, on, off. _Default: system._
+
+__cursorshape, -cs__: Cursor shape: block, ibeam, underline. _Default: block._
+
+__mouseautohide, -ma__: Hide cursor when the user presses a key and shown when the user moves the mouse. _Default: false._
+
+__colorX, -cX__: Specify color X of the terminals color palette. You may specify no palette, or a complete one with 16  total  colors.   For  this  you  have  to  use  -c0,  -c1, ..., -c15 or the equivalent color0, color1,... color15.
+
+__fixedX, -fX__: Overrides the calculated horizontal position of the window. Specifies the location of the left of the window.
+
+__fixedY, -fY__: Overrides the calculated vertical position of the window. Specifies the location of the top of the window.
+
+__allowreorder, -ar__: Allows the tabs of the tab bar to be reordered.
