@@ -10,6 +10,7 @@ The following list of options displays the .Xdefaults option first and then the 
 * __Added__: setting custom key for switching to the full-screen mode. _(key -fk)_
 * __Added__: turning on/off text cursor blinking. _(key -cb)_
 * __Added__: alternative cursor shape. _(key -cs)_
+* __Added__: option to hide cursor when the user presses a key and shown when the user moves the mouse. _(key -ma)_
 
 ## Requirements
 pkgconfig, gtk2, vte
