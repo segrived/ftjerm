@@ -1,4 +1,5 @@
 # Ftjerm v0.01 (fork of Stjerm)
+===============================
 
 ## Improvements over the original version of Stjerm:
 * __Improved__: completely rewritten Makefile.
