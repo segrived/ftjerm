@@ -18,3 +18,7 @@ pkgconfig, gtk2, vte
 
 ## Running
 Simply run: ftjerm
+
+## Options
+__key, -k__: Shortcut key which shows and hides ftjerm (eg: f12). If you don't specify a shortcut key, you  can only show/hide ftjerm if you run ftjerm with --toggle.
+__fullscreenkey, -fk__: Shortcut key which toggle fullscreen mode of ftjerm (eg: f2). Default: F11.
