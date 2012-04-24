@@ -1,5 +1,8 @@
 # Ftjerm v0.01 (fork of Stjerm)
 ===============================
+Ftjerm is a quake-style terminal. It is minimalistic and works well with compiz. Ftjerm can be configured via commandline or the .Xdefaults file.
+
+The following list of options displays the .Xdefaults option first and then the commandline option. The commandline options have a higher priority and thus override the .Xdefaults options.
 
 ## Improvements over the original version of Stjerm:
 * __Improved__: completely rewritten Makefile.
@@ -11,14 +14,22 @@
 ## Requirements
 pkgconfig, gtk2, vte
 
-## Installation
-`sudo make install`
-
-## Uninstallation
-`sudo make uninstall`
+## Installation / Uninstallation
+`sudo make install` for installation
+`sudo make uninstall` for uninstallation
 
 ## Running
-Simply run: ftjerm
+Simply run: ftjerm.
+
+## Actions
+
+__--help__: Displays menu with commandline options.
+
+__--info__: Displays menu with .Xdefaults options.
+
+__--version__: Display the current application version.
+
+__--toggle__: Show/hide the current ftjerm instance.
 
 ## Options
 __key, -k__: Shortcut key which shows and hides ftjerm (eg: f12). If you don't specify a shortcut key, you  can only show/hide ftjerm if you run ftjerm with --toggle.
