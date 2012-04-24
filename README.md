@@ -22,6 +22,10 @@ Simply run: ftjerm
 ## Options
 __key, -k__: Shortcut key which shows and hides ftjerm (eg: f12). If you don't specify a shortcut key, you  can only show/hide ftjerm if you run ftjerm with --toggle.
 
-__fullscreenkey, -fk__: Shortcut key which toggle fullscreen mode of ftjerm (eg: f2). Default: F11.
+__fullscreenkey, -fk__: Shortcut key which toggle fullscreen mode of ftjerm (eg: f2). _Default: F11._
 
-__mod, -m__:  Modifier  key,  which has to be pressed in combination with the shortcut key to show/hide ftjerm: shift, control, alt, windows, none. Default: none.
+__mod, -m__: Modifier  key,  which has to be pressed in combination with the shortcut key to show/hide ftjerm: shift, control, alt, windows, none. _Default: none._
+
+__keymod, -km__: Modifier for keyboard shortcuts. Can be a combination (with +)  of  modifiers  (eg:  control+alt). _Default: control+shift._
+
+__autohide, -ah__: Whether or not to hide ftjerm when it looses focus. _Default: true._
