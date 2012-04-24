@@ -1,4 +1,4 @@
-# Ftjerm v0.11 (fork of Stjerm)
+# Ftjerm v0.12 (fork of Stjerm)
 ===============================
 Ftjerm is a quake-style terminal. It is minimalistic and works well with compiz. Ftjerm can be configured via commandline or the .Xdefaults file.
 
