@@ -134,7 +134,7 @@ Option options[OPTION_COUNT] = {
     {"mod", "-m", "MODIFIER", "meta modifier key: shift, control, alt, windows, none."},
     {"keymod", "-km", "MODIFIER", "Modifier for keyboard shortcuts. Can be a combination (with +) of modifiers (eg: shift+control)."},
     {"autohide", "-ah", "BOOLEAN", "Whether or not to hide ftjerm when it looses focus. Default: true."},
-    {"font", "-fn", "FONT", "Terminal font and size (eg: Sans 10). Default: Bistream Vera Sans 10."},
+    {"font", "-fn", "FONT", "Terminal font and size (eg: Sans 10). Default: Fixed 9."},
     {"background", "-bg", "COLOR", "Background color. Default: Black."},
     {"foreground", "-fg", "COLOR", "Foreground color. Default: White."},
     {"allowbold", "-ab", "BOOLEAN", "Allow bold fonts or not. Default: true."},
@@ -185,13 +185,9 @@ pid_t get_ftjerm_pid(void)
     pclose(p);
     
     list = g_strsplit_set(buffer, " ", -1);
-    
-    while (list[i] != NULL)
-        i++;
-    
+    while (list[i] != NULL) i++;
     pid_t pid = (pid_t) atoi(list[i - 1]);
     g_strfreev(list);
-    
     return pid;
 }
 

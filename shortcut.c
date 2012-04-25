@@ -60,8 +60,7 @@ void init_key(void)
     {
         for(j = 0; j < modmap->max_keypermod; j++)
         {
-            if(modmap->modifiermap[i * modmap->max_keypermod + j] == 
-                XKeysymToKeycode(dpy, XK_Num_Lock))
+            if(modmap->modifiermap[i * modmap->max_keypermod + j] == XKeysymToKeycode(dpy, XK_Num_Lock))
                 numlockmask = (1 << i);
         }
     }

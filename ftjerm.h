@@ -56,7 +56,6 @@
 
 
 // The following defines borrowed from gnome-terminal:
-
 #define USERCHARS "-[:alnum:]"
 #define USERCHARS_CLASS "[" USERCHARS "]"
 #define PASSCHARS_CLASS "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]"
@@ -96,7 +95,6 @@ typedef struct {
 
 
 // The following patterns borrowed from gnome-terminal:
-
 static const RegExPattern uri_patterns[] = {
     {"news:[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", URL_TYPE_NEWS, G_REGEX_CASELESS },
     {SCHEME "//(?:" USERPASS "\\@)?" HOST PORT URLPATH, URL_TYPE_HTTP, G_REGEX_CASELESS},

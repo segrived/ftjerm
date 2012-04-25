@@ -23,6 +23,7 @@ pkgconfig, gtk2, vte
 
 Arch Linux users can install __Ftjerm__ from AUR: https://aur.archlinux.org/packages.php?ID=58754
 
+Frugalware Linux users can install __Ftjerm__ from official site: http://frugalware.org/packages/153251 (by __slown__)
 ## Changelog
 ### Version 0.12.1
 * __Added__: _showonstart_ option
