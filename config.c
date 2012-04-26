@@ -83,8 +83,6 @@ static void set_fullscreen_key(char*);
 static void set_pos(char *v);
 static void set_cursor_blink(char*);
 static void set_cursor_shape(char*);
-static void set_mouse_autohide(char*);
-static void set_show_onstart(char*);
 
 static GtkPositionType read_pos(char *v);
 static gboolean parse_hex_color(char *value, GdkColor *color);
@@ -278,16 +276,6 @@ void set_cursor_shape(char *v)
         _cursorshape = VTE_CURSOR_SHAPE_UNDERLINE;
 }
 
-void set_mouse_autohide(char* flag)
-{
-    _mouseautohide = parse_bool_str(flag, _mouseautohide);
-}
-
-void set_show_onstart(char *flag)
-{
-    _showonstart = parse_bool_str(flag, _showonstart);
-}
-
 GtkPositionType read_pos(char *v)
 {
     if(!strcmp(v, "top"))
@@ -442,9 +430,9 @@ void read_value(char *name, char *value)
         else if (!strcmp("cursorshape", name) || !strcmp("-cs", name))
             set_cursor_shape(value);
         else if (!strcmp("mouseautohide", name) || !strcmp("-ma", name))
-            set_mouse_autohide(value);
+            _mouseautohide = parse_bool_str(name, _mouseautohide);
         else if (!strcmp("showonstart", name) || !strcmp("-ss", name))
-            set_show_onstart(value);
+            _showonstart = parse_bool_str(name, _showonstart);
         else if(!strcmp("shell", name) || !strcmp("-sh", name))
             strcpy(_shell, value);
         else if(!strcmp("emulation", name) || !strcmp("-e", name))
