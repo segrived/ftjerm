@@ -1,7 +1,7 @@
 # Ftjerm v0.12.1 (fork of Stjerm)
 ===============================
 __Ftjerm__ is a quake-style terminal and a fork of __Stjerm__. It is minimalistic and works well with compiz. Ftjerm can be configured via commandline or the .Xdefaults file.
-
+![Screen](http://imgur.com/ZzY7g)
 The following list of options displays the .Xdefaults option first and then the commandline option. The commandline options have a higher priority and thus override the .Xdefaults options.
 
 ## Improvements over the original version of Stjerm:
