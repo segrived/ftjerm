@@ -36,18 +36,11 @@ install: all
 	@install -Dm755 ftjerm "$(DESTDIR)$(BINDIR)/ftjerm"
 	@echo installing manual pages to ${DESTDIR}${MANDIR}
 	@install -Dm644 ftjerm.8 "$(DESTDIR)$(MANDIR)/ftjerm.8.gz"
-	@echo installing default settings to ${DESTDIR}${PRGDIR}
-	@install -Dm644 defaults "$(DESTDIR)$(PRGDIR)/defaults"
-	@echo "You can copy default settings by this command:"
-	@echo "cat $(DESTDIR)$(PRGDIR)/defaults >> ~/.Xdefaults"
 
 uninstall:
 	@echo removing executable file from ${DESTDIR}${BINDIR}
 	@rm -f "$(DESTDIR)$(BINDIR)/ftjerm"
 	@echo removing manual pages from ${DESTDIR}${MANDIR}
 	@rm -f "$(DESTDIR)$(MANDIR)/ftjerm.8.gz"
-	@echo removing default settings from ${DESTDIR}${MANDIR}
-	@rm -f "$(DESTDIR)$(PRGDIR)/defaults"
-	@rm -rf "$(DESTDIR)$(PRGDIR)"
     
 .PRECIOUS: *.o
