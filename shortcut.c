@@ -94,7 +94,7 @@ void wait_key(void)
 
         if(event.type == KeyPress)
         {
-            if(XkbKeycodeToKeysym(dpy, event.xkey.keycode, 0, 1) == opt_key)
+            if(XkbKeycodeToKeysym(dpy, event.xkey.keycode, 0, 0) == opt_key)
                 mainwindow_toggle(0);
         }
     }
