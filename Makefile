@@ -3,7 +3,6 @@ LD = ${CC}
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/bin
 MANDIR ?= $(PREFIX)/share/man/man8
-PRGDIR ?= $(PREFIX)/share/ftjerm
 
 X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib
