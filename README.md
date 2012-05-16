@@ -1,4 +1,4 @@
-# Ftjerm v0.12.1 (fork of Stjerm)
+# Ftjerm v0.12.2 (fork of Stjerm)
 ===============================
 __Ftjerm__ is a quake-style terminal and a fork of __Stjerm__. It is minimalistic and works well with compiz. Ftjerm can be configured via commandline or the .Xdefaults file.
 ![Screen](http://i.imgur.com/ZzY7g.jpg)
@@ -25,6 +25,8 @@ Arch Linux users can install __Ftjerm__ from AUR: https://aur.archlinux.org/pack
 
 Frugalware Linux users can install __Ftjerm__ from official site: http://frugalware.org/packages/153251 (by __slown__)
 ## Changelog
+### Version 0.12.2
+* __Fixed__: Toggle window down't work on some systems
 ### Version 0.12.1
 * __Added__: _showonstart_ option
 * __Fixed__: Unescaped dashes in manpage.
