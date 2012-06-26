@@ -27,6 +27,7 @@ Frugalware Linux users can install __Ftjerm__ from official site: http://frugalw
 ## Changelog
 ### Version 0.12.3
 * __Fixed__: Blank terminal with some shells. Should fix this issues (google code): [n44](http://code.google.com/p/stjerm-terminal/issues/detail?id=44) and [n45](http://code.google.com/p/stjerm-terminal/issues/detail?id=45)
+
 ### Version 0.12.2
 * __Fixed__: Toggle window down't work on some systems
 
