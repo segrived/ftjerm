@@ -111,7 +111,9 @@ static void popupmenu_activate(gchar *label)
     else if(!strcmp(label, "Quit"))
     {
         gtk_widget_destroy(GTK_WIDGET(mainwindow));
-    } else if(!strcmp(label, "About")) {
+    }
+    else if(!strcmp(label, "About"))
+    {
         show_about_dialog();
     }
 

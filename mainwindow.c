@@ -362,7 +362,7 @@ void mainwindow_create_tab(void)
         gtk_container_child_set(GTK_CONTAINER(tabbar), GTK_WIDGET(tmp_box),
             "tab-expand", TRUE, "tab-fill", TRUE, NULL);
 
-    if(conf_get_show_tab() == TABS_ONE&& tabcount > 1)
+    if(conf_get_show_tab() == TABS_ONE && tabcount > 1)
         gtk_notebook_set_show_tabs(tabbar, TRUE);
 
     activetab = tabcount - 1;

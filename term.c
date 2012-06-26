@@ -185,15 +185,13 @@ static void term_app_request(VteTerminal *term, gpointer user_data)
 static void term_fork_command(VteTerminal *term, char *cmd)
 {
     #if VTE_CHECK_VERSION(0,25,0)
-    char **argv = NULL;
-    
-    g_shell_parse_argv(cmd, NULL, &argv, NULL);
-    
-    vte_terminal_fork_command_full(term, VTE_PTY_DEFAULT, NULL, argv, NULL, 
-        G_SPAWN_CHILD_INHERITS_STDIN|G_SPAWN_SEARCH_PATH|G_SPAWN_FILE_AND_ARGV_ZERO,
-        NULL, NULL, NULL, NULL);
+        char **argv = NULL;
+        g_shell_parse_argv(cmd, NULL, &argv, NULL);
+        vte_terminal_fork_command_full(term, VTE_PTY_DEFAULT, "", argv, NULL, 
+            G_SPAWN_CHILD_INHERITS_STDIN|G_SPAWN_SEARCH_PATH,
+            NULL, NULL, NULL, NULL);
     #else
-    vte_terminal_fork_command(term, cmd, NULL, NULL, "", TRUE, TRUE, TRUE);
+        vte_terminal_fork_command(term, cmd, NULL, NULL, "", TRUE, TRUE, TRUE);
     #endif
 }
 
