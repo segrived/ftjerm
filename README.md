@@ -111,7 +111,7 @@ __allowreorder, -ar__: Allows the tabs of the tab bar to be reordered.
 __showonstart, -ss__: Show terminal window on start: true, false. _Default: false._
 
 ## Authors
-    Copyright (C) 2012 - Holden Cox <segrived@gmail.com>
+    Copyright (C) 2012-2013 - Holden Cox <segrived@gmail.com>
     Copyright (C) 2011 - Mihail Szabolcs <szaby@szabster.net> (cursor blink and cursor shape parameters)
     Copyright (C) 2008 - Kristopher Wilson <kristopherwilson@gmail.com>
     Copyright (C) 2007 - Stjepan Glavina <stjepang@gmail.com>
