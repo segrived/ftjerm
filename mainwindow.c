@@ -344,6 +344,8 @@ void mainwindow_create_tab(void)
 
     if(conf_get_opacity() < 100 && screen_is_composited)
     {
+	vte_terminal_set_background_saturation (VTE_TERMINAL(tmp_term), 
+		1.0 - conf_get_opacity()/100);
         vte_terminal_set_background_transparent(VTE_TERMINAL(tmp_term), FALSE);
         vte_terminal_set_opacity(VTE_TERMINAL(tmp_term),
             conf_get_opacity()/100 * 0xffff);
