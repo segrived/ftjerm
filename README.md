@@ -68,7 +68,7 @@ __allowbold, -ab__: Allow bold fonts or not. _Default: true_
 
 __border, -b__: Border width. _Default: 0._
 
-__opacity, -o__: Opacity _(range: 10 - 100)_. If compositing is enabled ftjerm will use real transparency.  Otherwise you get pseudo-transparency.
+__opacity, -o__: Opacity _(range: 0 - 100)_. If compositing is enabled ftjerm will use real transparency.  Otherwise you get pseudo-transparency.
 
 __bgimage, -bgimg__: Background image file. Specify the filename. _Default: disabled._
 

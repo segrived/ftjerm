@@ -137,7 +137,7 @@ Option options[OPTION_COUNT] = {
     {"foreground", "-fg", "COLOR", "Foreground color. Default: White."},
     {"allowbold", "-ab", "BOOLEAN", "Allow bold fonts or not. Default: true."},
     {"border", "-b", "NUMBER", "Border width. Default: 0."},
-    {"opacity", "-o", "NUMBER", "Opacity (range: 10 - 100). Default: 100."},
+    {"opacity", "-o", "NUMBER", "Opacity (range: 0 - 100). Default: 100."},
     {"bgimage", "-bgimg", "FILE", "Background image to use on terminal."},
     {"width", "-w", "NUMBER", "Window width, either as an integer or a percentage (eg, 50%). Default: 800."},
     {"height", "-h", "NUMBER", "Window height, either as an integer or a percentage (eg, 50%).. Default: 400."},
